@@ -2,58 +2,82 @@ import { useState } from "react";
 
 export function EmojiPicker(): JSX.Element {
   const [EmojiFromCurrentRender, queueRerenderWithNewEmoji] =
-    useState<string>();
-  const [PrevEmojiFromCurrentRender, queueRerenderWithPrevNewEmoji] =
-    useState<string>();
+    useState<string>("");
+  const [PrevEmojiFromCurrentRender, queueRerenderWithPrevNewEmoji] = useState<
+    string[]
+  >([]);
 
   const handleSki = () => {
-    queueRerenderWithPrevNewEmoji(EmojiFromCurrentRender);
+    queueRerenderWithPrevNewEmoji(
+      [...PrevEmojiFromCurrentRender, EmojiFromCurrentRender].slice(-6)
+    );
     queueRerenderWithNewEmoji("⛷️");
   };
   const handleBeach = () => {
-    queueRerenderWithPrevNewEmoji(EmojiFromCurrentRender);
+    queueRerenderWithPrevNewEmoji(
+      [...PrevEmojiFromCurrentRender, EmojiFromCurrentRender].slice(-6)
+    );
     queueRerenderWithNewEmoji("🏝️");
   };
   const handleFairy = () => {
-    queueRerenderWithPrevNewEmoji(EmojiFromCurrentRender);
+    queueRerenderWithPrevNewEmoji(
+      [...PrevEmojiFromCurrentRender, EmojiFromCurrentRender].slice(-6)
+    );
     queueRerenderWithNewEmoji("🧚🏻‍♀️");
   };
   const handleTennis = () => {
-    queueRerenderWithPrevNewEmoji(EmojiFromCurrentRender);
+    queueRerenderWithPrevNewEmoji(
+      [...PrevEmojiFromCurrentRender, EmojiFromCurrentRender].slice(-6)
+    );
     queueRerenderWithNewEmoji("🎾");
   };
   const handleStrawb = () => {
-    queueRerenderWithPrevNewEmoji(EmojiFromCurrentRender);
+    queueRerenderWithPrevNewEmoji(
+      [...PrevEmojiFromCurrentRender, EmojiFromCurrentRender].slice(-6)
+    );
     queueRerenderWithNewEmoji("🍓");
   };
   const handleSparkle = () => {
-    queueRerenderWithPrevNewEmoji(EmojiFromCurrentRender);
+    queueRerenderWithPrevNewEmoji(
+      [...PrevEmojiFromCurrentRender, EmojiFromCurrentRender].slice(-6)
+    );
     queueRerenderWithNewEmoji("✨");
   };
   const handleSass = () => {
-    queueRerenderWithPrevNewEmoji(EmojiFromCurrentRender);
+    queueRerenderWithPrevNewEmoji(
+      [...PrevEmojiFromCurrentRender, EmojiFromCurrentRender].slice(-6)
+    );
     queueRerenderWithNewEmoji("💁‍♀️");
   };
   const handleHeartE = () => {
-    queueRerenderWithPrevNewEmoji(EmojiFromCurrentRender);
+    queueRerenderWithPrevNewEmoji(
+      [...PrevEmojiFromCurrentRender, EmojiFromCurrentRender].slice(-6)
+    );
     queueRerenderWithNewEmoji("😍");
   };
   const handleUpsidedown = () => {
-    queueRerenderWithPrevNewEmoji(EmojiFromCurrentRender);
+    queueRerenderWithPrevNewEmoji(
+      [...PrevEmojiFromCurrentRender, EmojiFromCurrentRender].slice(-6)
+    );
     queueRerenderWithNewEmoji("🙃");
   };
   const handleTongue = () => {
-    queueRerenderWithPrevNewEmoji(EmojiFromCurrentRender);
+    queueRerenderWithPrevNewEmoji(
+      [...PrevEmojiFromCurrentRender, EmojiFromCurrentRender].slice(-6)
+    );
     queueRerenderWithNewEmoji("😝");
   };
 
   return (
     <>
       <h1>Emoji Picker ✌️</h1>
-      <p>
-        Previous Emoji: {PrevEmojiFromCurrentRender} Current Emoji:{" "}
-        {EmojiFromCurrentRender}
-      </p>
+      <p>Current Emoji:{EmojiFromCurrentRender}</p>
+      <ul>
+        Previous Emojis:{" "}
+        {PrevEmojiFromCurrentRender.slice(1).map((e, index) => (
+          <li key={index}>{e}</li>
+        ))}
+      </ul>
       <button onClick={handleSki}>⛷️</button>
       <button onClick={handleBeach}>🏝️</button>
       <button onClick={handleFairy}>🧚🏻‍♀️</button>
